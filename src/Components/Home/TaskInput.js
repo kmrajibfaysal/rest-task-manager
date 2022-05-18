@@ -27,7 +27,6 @@ function TaskInput() {
     );
 
     const handleAdd = (data) => {
-        console.log(data);
         const task = {
             title: data.title,
             description: data.description,
@@ -43,11 +42,27 @@ function TaskInput() {
             .then((res) => res.json())
             .then((inserted) => {
                 if (inserted.insertedId) {
-                    toast.success('Doctor added successfully.');
                     reset();
                     refetch();
                 } else {
                     toast.error('failed to add the doctor!');
+                }
+            });
+    };
+
+    const handleDelete = (task) => {
+        fetch('http://localhost:5000/delete', {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(task),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount === 1) {
+                    toast.success(`Deleted: ${task.title}`);
+                    refetch();
                 }
             });
     };
@@ -101,7 +116,7 @@ function TaskInput() {
                                 <th>{task.title}</th>
                                 <th>{task.description}</th>
                                 <th>
-                                    <button type="button">
+                                    <button onClick={() => handleDelete(task)} type="button">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             className="h-5 w-5 text-red-600 hover:scale-110 hover:text-red-700"
