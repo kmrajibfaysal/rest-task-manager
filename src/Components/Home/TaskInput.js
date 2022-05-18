@@ -1,17 +1,44 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 function TaskInput() {
+    const [user] = useAuthState(auth);
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
     const handleAdd = (data) => {
         console.log(data);
+        const task = {
+            title: data.title,
+            description: data.description,
+            userName: user.email,
+        };
+        fetch('http://localhost:5000/add', {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json',
+            },
+            body: JSON.stringify(task),
+        })
+            .then((res) => res.json())
+            .then((inserted) => {
+                if (inserted.insertedId) {
+                    toast.success('Doctor added successfully.');
+                    reset();
+                } else {
+                    toast.error('failed to add the doctor!');
+                }
+            });
     };
+
     return (
         <form
             onSubmit={handleSubmit(handleAdd)}

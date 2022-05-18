@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskInput from './TaskInput';
+import TaskList from './TaskList';
 import WelcomeHeader from './WelcomeHeader';
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
         <div>
             <WelcomeHeader />
             <TaskInput />
+            <TaskList />
         </div>
     );
 }
