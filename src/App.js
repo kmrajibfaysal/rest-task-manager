@@ -1,7 +1,18 @@
+import { Route, Routes } from 'react-router-dom';
+import Login from './Components/Authentication/Login';
+import Register from './Components/Authentication/Register';
+import Navbar from './Components/Header/Navbar';
+import Home from './Components/Home/Home';
+
 function App() {
     return (
         <div>
-            <h1 className="text-9xl">Hello world!</h1>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
         </div>
     );
 }
