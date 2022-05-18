@@ -1,9 +1,12 @@
 import React from 'react';
+import TaskInput from './TaskInput';
+import WelcomeHeader from './WelcomeHeader';
 
 function Home() {
     return (
         <div>
-            <h3 className="text-4xl">This is home page</h3>
+            <WelcomeHeader />
+            <TaskInput />
         </div>
     );
 }
