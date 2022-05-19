@@ -13,15 +13,12 @@ function Navbar() {
     const handleLogOut = () => signOut(auth);
 
     return (
-        <div className=" bg-pink-100">
+        <div className=" bg-[#ddd1ff]">
             <div className="container navbar mx-auto">
                 <div className="flex-1">
                     <a className="btn btn-ghost text-xl normal-case">Task Manager</a>
                 </div>
                 <div className="flex-none gap-2">
-                    <div className="form-control">
-                        <input type="text" placeholder="Search" className="input input-bordered" />
-                    </div>
                     <div className="dropdown-end dropdown">
                         <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
                             <div className="w-10 rounded-full">

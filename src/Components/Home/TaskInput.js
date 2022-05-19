@@ -24,7 +24,9 @@ function TaskInput() {
         isLoading,
         refetch,
     } = useQuery('services', () =>
-        fetch(`http://localhost:5000/tasks?email=${email}`).then((res) => res.json())
+        fetch(`https://shrouded-plains-29126.herokuapp.com/tasks?email=${email}`).then((res) =>
+            res.json()
+        )
     );
 
     const handleAdd = (data) => {
@@ -34,7 +36,7 @@ function TaskInput() {
             userName: user.email,
             completed: false,
         };
-        fetch('http://localhost:5000/add', {
+        fetch('https://shrouded-plains-29126.herokuapp.com/add', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
@@ -53,7 +55,7 @@ function TaskInput() {
     };
 
     const handleDelete = (task) => {
-        fetch('http://localhost:5000/delete', {
+        fetch('https://shrouded-plains-29126.herokuapp.com/delete', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -63,7 +65,6 @@ function TaskInput() {
             .then((res) => res.json())
             .then((data) => {
                 if (data.deletedCount === 1) {
-                    toast.success(`Deleted: ${task.title}`);
                     refetch();
                 }
             });
@@ -84,7 +85,7 @@ function TaskInput() {
                         required: { value: true, message: 'Title is required!' },
                     })}
                     placeholder="Title"
-                    className="input input-bordered w-full max-w-xs text-lg"
+                    className="input input-ghost w-full max-w-xs text-lg"
                     type="text"
                 />
                 <p className=" text-red-500">{errors.title?.message}</p>
@@ -93,7 +94,7 @@ function TaskInput() {
                         required: { value: true, message: 'Description is required!' },
                     })}
                     placeholder="Description"
-                    className="input input-bordered h-16 w-full max-w-xs"
+                    className="input input-ghost h-16 w-full max-w-xs"
                     type="text"
                 />
                 <p className="mt-3 text-red-500">{errors.description?.message}</p>
@@ -102,13 +103,13 @@ function TaskInput() {
                 </button>
             </form>
             <div className="container mx-auto mt-4 overflow-x-auto">
-                <table className="table w-full">
+                <table className="mx-auto w-4/5">
                     <thead>
                         <tr>
                             <th />
                             <th>Title</th>
                             <th>Description</th>
-                            <th />
+                            <th>Actions</th>
                         </tr>
                     </thead>
 

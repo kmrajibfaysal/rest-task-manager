@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
+import { toast } from 'react-toastify';
 
 function TaskList({ handleDelete, tasks, refetch }) {
     const handleComplete = (completedTask) => {
-        fetch('http://localhost:5000/update', {
+        fetch('https://shrouded-plains-29126.herokuapp.com/update', {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -14,6 +15,7 @@ function TaskList({ handleDelete, tasks, refetch }) {
             .then((res) => res.json())
             .then(() => {
                 refetch();
+                toast.success(`Completed:${completedTask.title}`);
             });
     };
     return (
@@ -24,7 +26,7 @@ function TaskList({ handleDelete, tasks, refetch }) {
                     <th>{task.title}</th>
                     <th>{task.description}</th>
 
-                    <th className="flex items-center space-x-3">
+                    <th className="flex items-center justify-center space-x-3">
                         <button type="button" onClick={() => handleComplete(task)} className="">
                             <svg
                                 fill="green"

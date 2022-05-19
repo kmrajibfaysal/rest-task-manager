@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #ebe3ff;
+  min-height: 100vh;
+}
+
+input {
+  border-bottom: 2px solid #4d37ac71 !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+input:focus {
+  box-shadow: 0 17px 20px -21px #4d37acf6 !important;
+}
+
+table {
+  color: rgb(50, 39, 112) !important;
+}
+thead {
+  box-shadow: 0 5px 15px #0000001c;
+  border: 2px solid #cdc4ff54;
+}
+thead tr {
+  background-color: #d1c1ff85;
+}
+th {
+  padding: 15px 10px 15px 20px !important;
+}
+table td {
+  vertical-align: middle;
+  padding: 15px 10px 15px 20px !important;
+}

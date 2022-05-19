@@ -1,9 +1,19 @@
-# This is a template repo to generate full configured react project with tailwind configurations and eslint set up for auto correction!
+# This is a rest api project called Task Manager
 
-## You need to use this repo as template to generate new repo you desire!
+### Live Link: https://rest-task-manager.web.app/
 
-## To install dependencies just run `yarn install` or `npm install`
+## Features:
 
-## Or if you want to clone it directly, just clone it and delete the .git folder from the cloned folder then you will get fresh folder to work with, then you can run git init and other git command to push it back to your github account as a new project!
+- User can add daily task
+- User can update task
+- User can delete task
+- All data is secured and served from cloud database
 
-# Happy coding!!!!
+## Technologies used:
+
+- ReactJs
+- Tailwindcss
+- Nodejs
+- ExpressJs
+- MongoDB
+- JWT
